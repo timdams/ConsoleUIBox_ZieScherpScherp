@@ -1,11 +1,10 @@
-﻿
-using ConsoleUIBox_ZieScherpScherp.DrawingHelp;
+﻿using ConsoleUIBox_ZieScherpScherp.DrawingHelp;
 
-namespace ConsoleUIBox_ZieScherpScherp
+namespace ConsoleUIBox_ZieScherpScherp.BaseAbstractControls
 {
-  
-    
-    public abstract class ContentControl: Control
+
+
+    public abstract class ContentControl : Control
     {
         protected ContentControl(int w, int h) : base(w, h)
         {
@@ -17,7 +16,7 @@ namespace ConsoleUIBox_ZieScherpScherp
             set
             {
                 base.ElementState = value;
-                if(Content!=null)
+                if (Content != null)
                     Content.ElementState = base.ElementState;
             }
         }
@@ -25,7 +24,7 @@ namespace ConsoleUIBox_ZieScherpScherp
 
         public override void DrawAction(int x, int y)
         {
-            
+
             Content?.DrawAction(x, y);
         }
 

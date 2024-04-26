@@ -1,4 +1,5 @@
-﻿using ConsoleUIBox_ZieScherpScherp.DrawingHelp;
+﻿using ConsoleUIBox_ZieScherpScherp.BaseAbstractControls;
+using ConsoleUIBox_ZieScherpScherp.DrawingHelp;
 
 namespace ConsoleUIBox_ZieScherpScherp.Controls
 {

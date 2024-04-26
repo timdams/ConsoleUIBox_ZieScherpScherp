@@ -5,10 +5,10 @@ using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleUIBox_ZieScherpScherp
+namespace ConsoleUIBox_ZieScherpScherp.BaseAbstractControls
 {
     public enum ElementState { Inactive, Active, Selected }
-    abstract public class  Control
+    abstract public class Control
     {
         private ElementState elementState;
 
@@ -43,8 +43,8 @@ namespace ConsoleUIBox_ZieScherpScherp
         public virtual ElementState ElementState
         {
             get => elementState;
-            set 
-            { 
+            set
+            {
                 elementState = value;
                 switch (value)
                 {

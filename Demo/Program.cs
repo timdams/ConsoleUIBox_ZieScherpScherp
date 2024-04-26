@@ -1,4 +1,4 @@
-﻿using ConsoleUIBox_ZieScherpScherp;
+﻿using ConsoleUIBox_ZieScherpScherp.BaseAbstractControls;
 using ConsoleUIBox_ZieScherpScherp.Controls;
 
 namespace Demo
@@ -12,6 +12,7 @@ namespace Demo
 
             Window mainWindow = new Window(Console.WindowWidth - 3, Console.WindowHeight - 3, "Cursed WPF");
 
+            
 
             ListBox buttons = new ListBox();
             mainWindow.Content = buttons;
@@ -26,7 +27,7 @@ namespace Demo
           
 
             buttons.Items.AddRange(toAdd);
-            buttons.Items.Add(new CheckBox(new TextBlock("Check me"), false));
+            buttons.Items.Add(new RadioButton(new TextBlock("Check me"), false));
 
 
             mainWindow.Draw(1, 1);

@@ -8,18 +8,19 @@ using System.Threading.Tasks;
 
 namespace ConsoleUIBox_ZieScherpScherp.Controls
 {
-    public class TextBlock : ContentControl
+    public class RadioButton : ToggleControl
     {
-        public TextBlock( string text) : base(text.Length, 1)
+        public RadioButton(ContentControl text, bool startStateChecked) : base(text, startStateChecked)
         {
-            Text = text;
         }
-
-        public string Text { get; set; }
         public override void DrawAction(int x, int y)
         {
-            base.DrawAction(x, y);
-            DrawingLib.DrawTextLine(Text,x,y, Width, ForegroundColor, BackgroundColor);
+
+            //TODO hier ben ik
+            DrawingLib.DrawTextLine($"({(IsChecked ? '•' : ' ')})", x, y, int.MaxValue, ForegroundColor, BackgroundColor);
+
+            Content.DrawAction(x + 4, y);
+
         }
     }
 }

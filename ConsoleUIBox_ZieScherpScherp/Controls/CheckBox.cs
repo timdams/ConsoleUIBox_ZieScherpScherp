@@ -1,16 +1,15 @@
-﻿using ConsoleUIBox_ZieScherpScherp.DrawingHelp;
+﻿using ConsoleUIBox_ZieScherpScherp.BaseAbstractControls;
+using ConsoleUIBox_ZieScherpScherp.DrawingHelp;
 
 namespace ConsoleUIBox_ZieScherpScherp.Controls
 {
-    public class CheckBox : ContentControl //beter toggle button zoals radiobutton?
+    public class CheckBox : ToggleControl //beter toggle button zoals radiobutton?
     {
-        public bool IsChecked { get; private set; }
+       
 
-        public CheckBox(ContentControl text, bool startStateChecked) : base( text.Width + 4, 1)
+        public CheckBox(ContentControl text, bool startStateChecked) : base( text, startStateChecked)
         {
-            Content = text;
-            OnClick = ChangeChecked;
-            IsChecked = startStateChecked;
+            
 
         }
 
@@ -24,9 +23,6 @@ namespace ConsoleUIBox_ZieScherpScherp.Controls
 
         }
 
-        public void ChangeChecked()
-        {
-            IsChecked = !IsChecked;
-        }
+
     }
 }

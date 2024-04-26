@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleUIBox_ZieScherpScherp
+namespace ConsoleUIBox_ZieScherpScherp.BaseAbstractControls
 {
     public class ItemsControl : Control
     {
-        private const int itemspacing= 1; //TODO vertikaleruimte tussen ieder element. Mag niet nul zijn..snap niet waarom
+        private const int itemspacing = 1; //TODO vertikaleruimte tussen ieder element. Mag niet nul zijn..snap niet waarom
         public ItemsControl(int w, int h) : base(w, h)
         {
         }
@@ -46,7 +46,7 @@ namespace ConsoleUIBox_ZieScherpScherp
 
         public override void DrawAction(int x, int y)
         {
-            
+
             int currHeight = 1;
 
             foreach (var item in Items)
