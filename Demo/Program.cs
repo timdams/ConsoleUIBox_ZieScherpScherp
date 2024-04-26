@@ -9,30 +9,33 @@ namespace Demo
         {
             Console.CursorVisible = false; //todo naar drawing lib verhuizen?
 
-            ListBox buttons = new ListBox();
+            Window mainWindow = new Window(Console.WindowWidth - 3, Console.WindowHeight - 3, "Cursed WPF");
 
+
+            ListBox buttons = new ListBox();
+            mainWindow.Content = buttons;
             Button[] toAdd = {
-                new Button("Item 1", null, 20, 3),
-                new Button("Change but 1", () => (buttons.Items[0] as Button).Text = "Hey!", 20, 3),
-                new Button("Remove me", ()=>buttons.Items.RemoveAt(2), 20, 3),
-                new Button("Close", () => { Console.Clear(); Environment.Exit(0); }, 20, 3),
+                new Button(new TextBlock("Open window"), TestWindow, 20,3),
+                new Button(new TextBlock("Change but 1"), () => (buttons.Items[0].Content as TextBlock).Text = "Hey!", 20, 3),
+                new Button(new TextBlock("remove me"), ()=>buttons.Items.RemoveAt(2), 20, 3),
+                new Button(new TextBlock("Close me"), () => { Console.Clear(); Environment.Exit(0); }, 20, 3),
 
             };
 
 
             buttons.Items.AddRange(toAdd);
-            buttons.Items.Add(new CheckBox("Check me", false));
+            buttons.Items.Add(new CheckBox(new TextBlock("Check me"), false));
 
             int sel = 0;
             buttons.Items[sel].ElementState = ElementState.Selected;
             while (true)
             {
-                buttons.Draw(5, 6);
+                mainWindow.Draw(1, 1);
 
                 buttons.Items[sel].ElementState = ElementState.Active;
 
                 var choice = Console.ReadKey().Key;
-                Console.Clear();
+                
                 switch (choice)
                 {
                     case ConsoleKey.UpArrow:
@@ -44,7 +47,7 @@ namespace Demo
 
                         break;
                     case ConsoleKey.Enter:
-                        (buttons.Items[sel] as Button).Click();
+                        buttons.Items[sel].Click();
                         break;
                 }
                 buttons.Items[sel].ElementState = ElementState.Selected;
@@ -52,6 +55,12 @@ namespace Demo
             }
 
             Console.SetCursorPosition(1, 20);
+        }
+
+        public static void TestWindow()
+        {
+            Window about = new Window(10, 10, "About");
+            about.Draw(10, 10);
         }
     }
 }

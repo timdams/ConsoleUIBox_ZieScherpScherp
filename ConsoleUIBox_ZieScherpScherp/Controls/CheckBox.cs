@@ -2,14 +2,14 @@
 
 namespace ConsoleUIBox_ZieScherpScherp.Controls
 {
-    public class CheckBox : Button
+    public class CheckBox : ContentControl //beter toggle button zoals radiobutton?
     {
         public bool IsChecked { get; private set; }
 
-        public CheckBox(string text, bool startStateChecked) : base(text, null, text.Length + 4, 1)
+        public CheckBox(ContentControl text, bool startStateChecked) : base( text.Width + 4, 1)
         {
-
-            OnClick = this.ChangeChecked;
+            Content = text;
+            OnClick = ChangeChecked;
             IsChecked = startStateChecked;
 
         }
@@ -17,21 +17,11 @@ namespace ConsoleUIBox_ZieScherpScherp.Controls
         public override void Draw(int x, int y)
         {
 
-            ;
-            switch (ElementState)
-            {
-                case ElementState.Inactive:
-                    DrawingLib.DrawTextLine($"[{(IsChecked ? 'x' : ' ')}] {Text}", x, y, int.MaxValue, ConsoleColor.Gray, ConsoleColor.DarkGray);
-                    break;
-                case ElementState.Active:
-                    DrawingLib.DrawTextLine($"[{(IsChecked ? 'x' : ' ')}] {Text}", x, y, int.MaxValue);
-                    break;
-                case ElementState.Selected:
-                    DrawingLib.DrawTextLine($"[{(IsChecked ? 'x' : ' ')}] {Text}", x, y, int.MaxValue, ConsoleColor.Yellow, ConsoleColor.DarkYellow);
-                    break;
-                default:
-                    break;
-            }
+            base.Draw(x, y);
+
+            DrawingLib.DrawTextLine($"[{(IsChecked ? 'x' : ' ')}]", x, y, int.MaxValue,ForegroundColor,BackgroundColor);
+
+            Content.Draw(x + 4, y);
 
         }
 
