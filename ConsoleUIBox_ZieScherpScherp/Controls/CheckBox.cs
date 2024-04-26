@@ -14,14 +14,13 @@ namespace ConsoleUIBox_ZieScherpScherp.Controls
 
         }
 
-        public override void Draw(int x, int y)
+        public override void DrawAction(int x, int y)
         {
 
-            base.Draw(x, y);
-
+       
             DrawingLib.DrawTextLine($"[{(IsChecked ? 'x' : ' ')}]", x, y, int.MaxValue,ForegroundColor,BackgroundColor);
 
-            Content.Draw(x + 4, y);
+            Content.DrawAction(x + 4, y);
 
         }
 

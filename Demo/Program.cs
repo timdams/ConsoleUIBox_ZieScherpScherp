@@ -9,6 +9,7 @@ namespace Demo
         {
             Console.CursorVisible = false; //todo naar drawing lib verhuizen?
 
+
             Window mainWindow = new Window(Console.WindowWidth - 3, Console.WindowHeight - 3, "Cursed WPF");
 
 
@@ -16,20 +17,27 @@ namespace Demo
             mainWindow.Content = buttons;
             Button[] toAdd = {
                 new Button(new TextBlock("Open window"), TestWindow, 20,3),
-                new Button(new TextBlock("Change but 1"), () => (buttons.Items[0].Content as TextBlock).Text = "Hey!", 20, 3),
+                new Button(new TextBlock("Change but 1"), () =>( (buttons.Items[0] as ContentControl).Content as TextBlock).Text = "Hey!", 20, 3),
                 new Button(new TextBlock("remove me"), ()=>buttons.Items.RemoveAt(2), 20, 3),
                 new Button(new TextBlock("Close me"), () => { Console.Clear(); Environment.Exit(0); }, 20, 3),
 
             };
 
+          
 
             buttons.Items.AddRange(toAdd);
             buttons.Items.Add(new CheckBox(new TextBlock("Check me"), false));
+
+
+            mainWindow.Draw(1, 1);
+
+            Console.ReadKey();
 
             int sel = 0;
             buttons.Items[sel].ElementState = ElementState.Selected;
             while (true)
             {
+                Console.Clear();
                 mainWindow.Draw(1, 1);
 
                 buttons.Items[sel].ElementState = ElementState.Active;
@@ -51,7 +59,7 @@ namespace Demo
                         break;
                 }
                 buttons.Items[sel].ElementState = ElementState.Selected;
-
+               
             }
 
             Console.SetCursorPosition(1, 20);
@@ -60,7 +68,8 @@ namespace Demo
         public static void TestWindow()
         {
             Window about = new Window(10, 10, "About");
-            about.Draw(10, 10);
+            about.DrawAction(10, 10);
+            Console.ReadKey();
         }
     }
 }

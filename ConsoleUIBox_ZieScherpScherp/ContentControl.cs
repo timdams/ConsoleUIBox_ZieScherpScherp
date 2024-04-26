@@ -23,11 +23,10 @@ namespace ConsoleUIBox_ZieScherpScherp
         }
         public Control Content { get; set; }
 
-        public override void Draw(int x, int y)
+        public override void DrawAction(int x, int y)
         {
-            base.Draw(x, y);
             
-            Content?.Draw(x, y);
+            Content?.DrawAction(x, y);
         }
 
     }

@@ -12,15 +12,15 @@ namespace ConsoleUIBox_ZieScherpScherp.Controls
             OnClick = action;
         }
 
-        public override void Draw(int x, int y)
+        public override void DrawAction(int x, int y)
         {
-            base.Draw(x, y);
+           base.DrawAction(x, y);
 
 
             DrawingLib.DrawRectangle(x, y, Width, Height, ForegroundColor, BackgroundColor);
 
-            Content.Draw(x + 1, y + Height / 2);
-
+            Content.DrawAction(x + 1, y + Height / 2);
+            
         }
 
  

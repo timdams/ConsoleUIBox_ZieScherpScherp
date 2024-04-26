@@ -15,13 +15,15 @@ namespace ConsoleUIBox_ZieScherpScherp.Controls
             Title = title;
         }
 
-        public override void Draw(int x, int y)
+        public override void DrawAction(int x, int y)
         {
-            base.Draw(x, y);
-            DrawingLib.DrawRectangle(x, y, Width, Height, ForegroundColor, BackgroundColor,true);
+            
+            DrawingLib.DrawRectangle(x, y, Width, Height, ForegroundColor, BackgroundColor);
+                       
             string tit = Title;
 
             DrawingLib.DrawTextLine(tit, x + 1, y, Width - 2, ForegroundColor, BackgroundColor);
+            base.DrawAction(x+1, y+1);
         }
     }
 }
