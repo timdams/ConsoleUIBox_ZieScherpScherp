@@ -11,9 +11,5 @@ namespace ConsoleUIBox_ZieScherpScherp.Controls
 
         }
 
-     
-  
-
-
     }
 }

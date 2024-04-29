@@ -17,7 +17,7 @@ namespace ConsoleUIBox_ZieScherpScherp.Controls
         {
 
             //TODO hier ben ik
-            DrawingLib.DrawTextLine($"({(IsChecked ? '•' : ' ')})", x, y, int.MaxValue, ForegroundColor, BackgroundColor);
+            DrawingLib.DrawTextLine($"({(IsChecked ? '*' : ' ')})", x, y, int.MaxValue, ForegroundColor, BackgroundColor);
 
             Content.DrawAction(x + 4, y);
 

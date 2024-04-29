@@ -61,5 +61,61 @@ namespace ConsoleUIBox_ZieScherpScherp.BaseAbstractControls
 
 
         }
+
+
+        public void SelectItem(int index)
+        {
+            if (index < 0 || index >= Items.Count)
+                return;
+
+            for (int i = 0; i < Items.Count; i++)
+            {
+                if (i == index)
+                    Items[i].ElementState = ElementState.Selected;
+                else
+                    Items[i].ElementState = ElementState.Active;
+            }
+        }
+
+        public void SelectItem(Control item)
+        {
+            int index = Items.IndexOf(item);
+            SelectItem(index);
+        }
+
+        //Todo: Items private maken 
+        public void AddItem(Control item)
+        {
+            Items.Add(item);
+        }
+        public void RemoveItem(Control item)
+        {
+            Items.Remove(item);
+        }
+        public void ClearItems()
+        {
+            Items.Clear();
+        }
+        public Control GetItem(int index)
+        {
+            return Items[index];
+        }
+        public int GetItemIndex(Control item)
+        {
+            return Items.IndexOf(item);
+        }
+        public void SetItem(int index, Control item)
+        {
+            Items[index] = item;
+        }
+        public void SetItemIndex(Control item, int index)
+        {
+            Items.Insert(index, item);
+        }
+        public void RemoveItem(int index)
+        {
+            Items.RemoveAt(index);
+        }
+
     }
 }
